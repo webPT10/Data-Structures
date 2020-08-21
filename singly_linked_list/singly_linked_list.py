@@ -6,16 +6,62 @@ class Node:
 
 class LinkedList:
     def __init__(self):
-        self.head = None # poinst @ first node in list
-        self.tail = None # points @ last node in list
+        self.head = None
+        self.tail = None
 
-    # append / add --> add_to_tail
     def add_to_tail(self, value):
-        pass
+        # Create the node
+        newNode = Node(value, None)
+        # Check to see if there is a tail value
+        if self.head is None:
+            # If no tail: Set value as Tail (Assumed empty list)
+            self.head = newNode
+            self.tail = newNode
 
-    #remove
+        else:
+            # access current tail node value
+            oldTail = self.tail
+            # Update current tail node's "Next Value" to new tail
+            oldTail.next = newNode
+            # Set new node to tail
+            self.tail = newNode
+
     def remove_head(self):
-        pass
+        if self.head is None:
+            return None
+        else:
+            # Check to see if there is a list of one
+            if self.head == self.tail:
+                # Set both head and tail to none
+                oldHead = self.head
+                self.head = None
+                self.tail = None
+                return oldHead.value
+
+            else:
+                currentHead = self.head
+                self.head = currentHead.next
+                return currentHead.value
 
     def remove_tail(self):
-        pass
+        if self.head == None:
+            return None
+
+        elif self.head == self.tail:
+            oldTail = self.tail
+            self.head = None
+            self.tail = None
+            return oldTail.value
+        else:
+            current = self.head
+            # I need to ID the Tail to know when to stop
+            oldTail = self.tail
+            # "NewTail is equal to the node.next with the current tails value"
+            while current.next is not self.tail:
+                current = current.next
+
+            removedValue = self.tail.value
+            self.tail = None
+            self.tail = current
+
+            return removedValue
