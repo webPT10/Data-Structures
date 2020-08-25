@@ -1,4 +1,3 @@
-
 class Node:
     def __init__(self, value, next=None):
         self.value = value
@@ -8,6 +7,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+        # self.length = 
 
     def add_to_tail(self, value):
         # Create the node
@@ -44,22 +44,25 @@ class LinkedList:
                 return currentHead.value
 
     def remove_tail(self):
-        if self.head == None:
+        # if None
+        if self.tail is None:
             return None
 
+        # if One
         elif self.head == self.tail:
+            # set both Head & Tail to None
             oldTail = self.tail
             self.head = None
             self.tail = None
             return oldTail.value
+
+        # if Many
         else:
             current = self.head
-            # I need to ID the Tail to know when to stop
             oldTail = self.tail
-            # "NewTail is equal to the node.next with the current tails value"
             while current.next is not self.tail:
                 current = current.next
-
+            
             removedValue = self.tail.value
             self.tail = None
             self.tail = current

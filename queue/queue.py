@@ -24,10 +24,12 @@ class Queue:
         return self.storage.length
 
     def enqueue(self, value):
+        # add to the tail, remove head
         self.storage.add_to_tail(value)
         self.size = self.storage.length
 
     def dequeue(self):
+        # remove head, keep count, return removed value
         if self.size == 0:
             return None
         else:
