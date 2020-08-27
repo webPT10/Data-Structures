@@ -10,12 +10,10 @@ class ListNode:
         self.value = value
         self.next = next
 
-
 """
 Our doubly-linked list class. It holds references to 
 the list's head and tail nodes.
 """
-
 
 class DoublyLinkedList:
     def __init__(self, node=None):
